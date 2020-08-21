@@ -1,0 +1,3 @@
+= Kotlin-Katas
+
+This project contains all the katas I tried for fun.
