@@ -11,6 +11,7 @@ repositories {
 }
 dependencies {
     testImplementation(kotlin("test-junit5"))
+    testImplementation("io.kotest:kotest-assertions-core-jvm:4.2.0")
 }
 tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = "1.8"
