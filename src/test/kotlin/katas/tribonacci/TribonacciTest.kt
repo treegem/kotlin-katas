@@ -4,7 +4,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class TribonacciKtTest {
+internal class TribonacciTest {
 
     @Test
     fun tribonacci__fail__nNegative() {
