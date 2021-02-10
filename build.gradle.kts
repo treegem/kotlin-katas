@@ -11,6 +11,7 @@ repositories {
 }
 dependencies {
     testImplementation(kotlin("test-junit5"))
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")
     testImplementation("io.kotest:kotest-assertions-core-jvm:4.2.0")
     implementation(kotlin("stdlib-jdk8"))
 }
