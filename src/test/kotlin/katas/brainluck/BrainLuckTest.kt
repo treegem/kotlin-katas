@@ -20,6 +20,6 @@ internal class BrainLuckTest {
         val input = charArrayOf(8.toChar(), 9.toChar())
         BrainLuck(",>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.")
             .process(input[0].toString() + input[1].toString()) shouldBe
-                (input[0].toInt() * input[1].toInt()).toChar().toString()
+                (input[0].code * input[1].code).toChar().toString()
     }
 }

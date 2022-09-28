@@ -30,7 +30,7 @@ class BrainLuck(private val code: String) {
     }
 
     private fun copyInputCharToCell(input: String) {
-        cells[cellIndex] = input[inputIndex].toInt()
+        cells[cellIndex] = input[inputIndex].code
         inputIndex++
     }
 
