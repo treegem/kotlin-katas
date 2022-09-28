@@ -1,8 +1,5 @@
 package katas.timeformatter
 
-import kotlin.time.DurationUnit.SECONDS
-import kotlin.time.toDuration
-
 data class FormattedDuration(
     val years: Int,
     val days: Int,
@@ -33,17 +30,26 @@ data class FormattedDuration(
         private const val MINUTES_IN_HOUR = 60
         private const val SECONDS_IN_MINUTE = 60
 
-        fun fromSeconds(seconds: Int): FormattedDuration {
-            val duration = seconds.toDuration(SECONDS)
-
-            return FormattedDuration(
-                years = duration.inWholeDays.floorDiv(DAYS_IN_YEAR).toInt(),
-                days = duration.inWholeDays.toInt() % DAYS_IN_YEAR,
-                hours = duration.inWholeHours.toInt() % HOURS_IN_DAY,
-                minutes = duration.inWholeMinutes.toInt() % MINUTES_IN_HOUR,
-                seconds = duration.inWholeSeconds.toInt() % SECONDS_IN_MINUTE
+        fun fromSeconds(seconds: Int) =
+            FormattedDuration(
+                years = seconds.inWholeYears,
+                days = seconds.inWholeDays % DAYS_IN_YEAR,
+                hours = seconds.inWholeHours % HOURS_IN_DAY,
+                minutes = seconds.inWholeMinutes % MINUTES_IN_HOUR,
+                seconds = seconds % SECONDS_IN_MINUTE
             )
-        }
+
+        private val Int.inWholeYears: Int
+            get() = this.floorDiv(SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_YEAR)
+
+        private val Int.inWholeDays: Int
+            get() = this.floorDiv(SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY)
+
+        private val Int.inWholeHours: Int
+            get() = this.floorDiv(SECONDS_IN_MINUTE * MINUTES_IN_HOUR)
+
+        private val Int.inWholeMinutes: Int
+            get() = this.floorDiv(SECONDS_IN_MINUTE)
     }
 }
 
